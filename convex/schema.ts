@@ -33,9 +33,53 @@ const petSchema = {
   })
 }
 
+const petStatLog = {
+  petStatLog: defineTable({
+    experiencePoints: v.number(),
+    level: v.number(),
+    petId: v.id('pet'),
+  })
+}
+
+const runLog = {
+  runLog: defineTable({
+    durationMinutes: v.number(),
+    distanceKM: v.number(),
+    petStatLogId: v.id('pet_stat_log'),
+    runDate: v.string(),
+    caloriesBurned: v.number(),
+    userId: v.id('user'),
+  })
+}
+
+const petTypeSchema = {
+  petType: defineTable({
+    petTypeName: v.string(),
+    levelingDifficulty: v.number(),
+  })
+}
+
+const evolution = {
+  evolution: defineTable({
+    evolutionStage: v.string(),
+    evolutionImgUrl: v.string(),
+    requiredLevel: v.number(),
+    maxHealthPoints: v.number(),
+    requiredExperiencePoints: v.number(),
+    petId: v.id('pet'),
+    description: v.optional(v.string()),
+    isFinalEvolution: v.boolean(),
+    isEgg: v.boolean(),
+    requiredHatchDistance: v.optional(v.number()),
+  })
+}
 
 
 export default defineSchema({
   ...userSchema,
   ...petSchema,
+  ...petTypeSchema,
+  ...evolution,
+  ...petStatLog,
+  ...runLog,
 });
