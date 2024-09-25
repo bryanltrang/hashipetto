@@ -6,7 +6,9 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { ConvexProvider, ConvexReactClient } from "convex/react";
+import { ConvexReactClient } from "convex/react";
+import { ClerkProvider, useAuth } from "@clerk/clerk-react";
+import { ConvexProviderWithClerk } from "convex/react-clerk";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -31,14 +33,18 @@ export default function RootLayout() {
     return null;
   }
 
+  const convexKey = process.env.CONVEX_PUBLISHABLE_KEY as string;
+
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <ConvexProvider client={convex}>
+      <ClerkProvider publishableKey={convexKey}>
+      <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
-      </ConvexProvider>
+      </ConvexProviderWithClerk>
+      </ClerkProvider>
     </ThemeProvider>
   );
 }
