@@ -1,7 +1,9 @@
 import { useSignIn } from '@clerk/clerk-expo';
 import { Link, useRouter } from 'expo-router';
-import { Text, TextInput, Button, View } from 'react-native';
+import { TextInput, Button } from 'react-native';
 import React from 'react';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
 export default function SignInScreen() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -35,7 +37,7 @@ export default function SignInScreen() {
   }, [isLoaded, emailAddress, password]);
 
   return (
-    <View>
+    <ThemedView>
       <TextInput
         autoCapitalize="none"
         value={emailAddress}
@@ -49,12 +51,12 @@ export default function SignInScreen() {
         onChangeText={(password) => setPassword(password)}
       />
       <Button title="Sign In" onPress={onSignInPress} />
-      <View>
-        <Text>Don't have an account?</Text>
-        <Link href="/sign-up">
-          <Text>Sign up</Text>
+      <ThemedView>
+        <ThemedText>Don't have an account?</ThemedText>
+        <Link href="/signUp">
+          <ThemedText>Sign up</ThemedText>
         </Link>
-      </View>
-    </View>
+      </ThemedView>
+    </ThemedView>
   );
 }

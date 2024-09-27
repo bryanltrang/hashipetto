@@ -1,16 +1,16 @@
-import * as React from 'react';
 import { TextInput, Button, View } from 'react-native';
 import { useSignUp } from '@clerk/clerk-expo';
 import { useRouter } from 'expo-router';
+import { useState } from 'react';
 
-export default function SignUpScreen() {
+export default function EmailSignUp() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
 
-  const [emailAddress, setEmailAddress] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [pendingVerification, setPendingVerification] = React.useState(false);
-  const [code, setCode] = React.useState('');
+  const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
+  const [pendingVerification, setPendingVerification] = useState(false);
+  const [code, setCode] = useState('');
 
   const onSignUpPress = async () => {
     if (!isLoaded) {

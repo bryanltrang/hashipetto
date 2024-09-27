@@ -1,27 +1,20 @@
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { SignedIn, SignedOut, useUser } from '@clerk/clerk-react';
+import { SignedOut } from '@clerk/clerk-react';
 import { Link } from 'expo-router';
 
 export default function Login() {
-  const { user } = useUser();
   return (
-    <ThemedView>
-      <ThemedText type="title">Welcome to Hashipetto</ThemedText>
+    <ThemedView style={{ marginTop: 64 }}>
       <SignedOut>
-        <ThemedText type="title">Sign up!</ThemedText>
-        <Link href="/(auth)/sign-up">
+        <ThemedText type="title">Welcome to Hashipetto</ThemedText>
+        <Link push href="/(auth)/signUp">
           <ThemedText>Create an account</ThemedText>
         </Link>
-        <Link href="/(auth)/sign-in">
+        <Link push href="/(auth)/signIn">
           <ThemedText>Log In</ThemedText>
         </Link>
       </SignedOut>
-
-      <SignedIn>
-        {/* this is where you would show tabs and navigation because the user is logged in */}
-        <ThemedText>Hello {user?.emailAddresses[0].emailAddress}</ThemedText>
-      </SignedIn>
     </ThemedView>
   );
 }
