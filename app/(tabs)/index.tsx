@@ -4,8 +4,9 @@ import { useUser } from '@clerk/clerk-expo';
 
 export default function HomeScreen() {
   const { user } = useUser();
+  console.log('user?.firstName', user?.firstName);
   return (
-    <ThemedView>
+    <ThemedView style={{ marginTop: 64 }}>
       <ThemedText>Welcome home {user?.firstName}</ThemedText>
     </ThemedView>
   );

@@ -1,7 +1,7 @@
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { SignedOut } from '@clerk/clerk-react';
-import { Link } from 'expo-router';
+import { SignedIn, SignedOut } from '@clerk/clerk-react';
+import { Link, Redirect } from 'expo-router';
 
 export default function Login() {
   return (
@@ -15,6 +15,9 @@ export default function Login() {
           <ThemedText>Log In</ThemedText>
         </Link>
       </SignedOut>
+      <SignedIn>
+        <Redirect href={'/(tabs)/'} />
+      </SignedIn>
     </ThemedView>
   );
 }
