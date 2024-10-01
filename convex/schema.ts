@@ -29,6 +29,7 @@ const pets = {
     lastInteraction: v.string(),
     totalDistanceKM: v.number(),
     totalDurationMinutes: v.number(),
+    needsRecovery: v.boolean(),
   }),
 };
 
@@ -70,6 +71,7 @@ const evolutions = {
     isFinalEvolution: v.boolean(),
     isEgg: v.boolean(),
     requiredHatchDistance: v.optional(v.number()),
+    requiredRecoveryDistance: v.optional(v.number()),
   }),
 };
 
