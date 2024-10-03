@@ -15,6 +15,9 @@ import { ConvexProviderWithClerk } from 'convex/react-clerk';
 import SpaceMonoRegular from '../assets/fonts/SpaceMono-Regular.ttf';
 import { tokenCache } from '@/authentication/tokenCache';
 
+// Import your global CSS file
+import '../global.css';
+
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
