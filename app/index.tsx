@@ -1,13 +1,12 @@
-import { ThemedLinkButton } from '@/components/ThemedLinkButton';
+import { ThemedLink } from '@/components/ThemedLinkButton';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import { Redirect } from 'expo-router';
-import { View } from 'react-native';
 
 export default function Login() {
   return (
-    <ThemedView className="mt-[64px]">
+    <ThemedView className="mt-[64px] p-4">
       <SignedOut>
         <ThemedText
           style={{ fontFamily: 'DisplayDots' }}
@@ -19,22 +18,18 @@ export default function Login() {
           className="text-center text-lg mb-[16px]">
           A new friend awaits...
         </ThemedText>
-        <View
-          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-          className="w-[100%] mt-[60px]">
-          <ThemedLinkButton
-            push
-            href="/(auth)/signUp"
-            className="text-center text-base font-semibold bg-amber-300 h-10 leading-10 mb-4 w-[90%]">
-            Create an account
-          </ThemedLinkButton>
-          <ThemedLinkButton
-            push
-            href="/(auth)/signIn"
-            className="text-center text-base font-semibold border bg-slate-100 border-slate-200 h-10 leading-10 w-[90%]">
-            Log In
-          </ThemedLinkButton>
-        </View>
+        <ThemedLink
+          push
+          href="/(auth)/signUp"
+          className="text-center text-base font-semibold overflow-hidden bg-amber-300 leading-10 mb-4 rounded-md">
+          Create an account
+        </ThemedLink>
+        <ThemedLink
+          push
+          href="/(auth)/signIn"
+          className="text-center text-base font-semibold border overflow-hidden bg-slate-100 border-slate-200 leading-10 rounded-md">
+          Log In
+        </ThemedLink>
       </SignedOut>
       <SignedIn>
         <Redirect href={'/(tabs)/'} />

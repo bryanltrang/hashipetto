@@ -1,17 +1,15 @@
-import { Link, LinkProps } from 'expo-router';
+import { Link, type LinkProps } from 'expo-router';
 
-export type ThemedTextProps = LinkProps<string> & {
+export type ThemedLinkProps = LinkProps<string> & {
   lightColor?: string;
   darkColor?: string;
 };
 
-export function ThemedLinkButton({
+export function ThemedLink({
   style,
   lightColor,
   darkColor,
   ...rest
-}: ThemedTextProps) {
-  return (
-    <Link style={[{ fontFamily: 'Urbanist_600SemiBold' }, style]} {...rest} />
-  );
+}: ThemedLinkProps) {
+  return <Link style={style} {...rest} />;
 }
