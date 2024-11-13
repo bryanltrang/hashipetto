@@ -1,90 +1,28 @@
-import * as React from 'react';
-import { TextInput, Button, View } from 'react-native';
-import { useSignUp } from '@clerk/clerk-expo';
-import { useRouter } from 'expo-router';
+import EmailSignUp from '@/components/auth/emailSignup';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import { Link } from 'expo-router';
 
 export default function SignUpScreen() {
-  const { isLoaded, signUp, setActive } = useSignUp();
-  const router = useRouter();
-
-  const [emailAddress, setEmailAddress] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [pendingVerification, setPendingVerification] = React.useState(false);
-  const [code, setCode] = React.useState('');
-
-  const onSignUpPress = async () => {
-    if (!isLoaded) {
-      return;
-    }
-
-    try {
-      await signUp.create({
-        emailAddress,
-        password,
-      });
-
-      await signUp.prepareEmailAddressVerification({ strategy: 'email_code' });
-
-      setPendingVerification(true);
-    } catch (err) {
-      // See https://clerk.com/docs/custom-flows/error-handling
-      // for more info on error handling
-      console.error(JSON.stringify(err, null, 2));
-    }
-  };
-
-  const onPressVerify = async () => {
-    if (!isLoaded) {
-      return;
-    }
-
-    try {
-      const completeSignUp = await signUp.attemptEmailAddressVerification({
-        code,
-      });
-
-      if (completeSignUp.status === 'complete') {
-        await setActive({ session: completeSignUp.createdSessionId });
-        router.replace('/');
-      } else {
-        console.error(JSON.stringify(completeSignUp, null, 2));
-      }
-    } catch (err) {
-      // See https://clerk.com/docs/custom-flows/error-handling
-      // for more info on error handling
-      console.error(JSON.stringify(err, null, 2));
-    }
-  };
-
   return (
-    <View>
-      {!pendingVerification && (
-        <>
-          <TextInput
-            autoCapitalize="none"
-            value={emailAddress}
-            placeholder="Email..."
-            onChangeText={(email) => setEmailAddress(email)}
-          />
-          <TextInput
-            value={password}
-            placeholder="Password..."
-            secureTextEntry={true}
-            onChangeText={(password) => setPassword(password)}
-          />
-          <Button title="Sign Up" onPress={onSignUpPress} />
-        </>
-      )}
-      {pendingVerification && (
-        <>
-          <TextInput
-            value={code}
-            placeholder="Code..."
-            onChangeText={(code) => setCode(code)}
-          />
-          <Button title="Verify Email" onPress={onPressVerify} />
-        </>
-      )}
-    </View>
+    <ThemedView className="flex-1 p-4">
+      <ThemedText
+        style={{ fontFamily: 'DisplayDots' }}
+        className="text-3xl mb-[16px]">
+        Create an account
+      </ThemedText>
+      <EmailSignUp />
+      <ThemedView className="flex-1 grow" />
+      <ThemedView>
+        <ThemedText className="text-center font-semibold mb-4">
+          Have an account?
+        </ThemedText>
+        <Link
+          href="/sign-in"
+          className="text-center text-base font-semibold border overflow-hidden bg-slate-100 border-slate-200 leading-10 rounded-md">
+          <ThemedText>Login</ThemedText>
+        </Link>
+      </ThemedView>
+    </ThemedView>
   );
 }

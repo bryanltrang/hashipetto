@@ -1,19 +1,16 @@
-import { defineSchema, defineTable } from "convex/server";
-import { v } from "convex/values";
+import { defineSchema, defineTable } from 'convex/server';
+import { v } from 'convex/values';
 
-const userSchema = {
-  user: defineTable({
-    firstName: v.string(),
-    lastName: v.string(),
-    email: v.string(),
-    password: v.string(),
+const users = {
+  users: defineTable({
     profileImageUrl: v.string(),
-    activePet: v.id('pet'),
-  })
-}
+    activePet: v.id('pets'),
+    clerkUserId: v.string(),
+  }),
+};
 
-const petSchema = {
-  pet: defineTable({
+const pets = {
+  pets: defineTable({
     defaultName: v.string(),
     name: v.optional(v.string()),
     description: v.optional(v.string()),
@@ -25,61 +22,62 @@ const petSchema = {
       v.literal('third'),
     ),
     healthPoints: v.number(),
-    userId: v.id('user'),
-    petTypeId: v.id('pet_type'),
+    userId: v.id('users'),
+    petTypeId: v.id('petTypes'),
     lastInteraction: v.string(),
     totalDistanceKM: v.number(),
     totalDurationMinutes: v.number(),
-  })
-}
+    needsRecovery: v.boolean(),
+  }),
+};
 
 const petStatLog = {
   petStatLog: defineTable({
     experiencePoints: v.number(),
     level: v.number(),
-    petId: v.id('pet'),
-  })
-}
+    petId: v.id('pets'),
+  }),
+};
 
 const runLog = {
   runLog: defineTable({
     durationMinutes: v.number(),
     distanceKM: v.number(),
-    petStatLogId: v.id('pet_stat_log'),
+    petStatLogId: v.id('petStatLog'),
     runDate: v.string(),
     caloriesBurned: v.number(),
-    userId: v.id('user'),
-  })
-}
+    userId: v.id('users'),
+  }),
+};
 
-const petTypeSchema = {
-  petType: defineTable({
+const petTypes = {
+  petTypes: defineTable({
     petTypeName: v.string(),
     levelingDifficulty: v.number(),
-  })
-}
+  }),
+};
 
-const evolution = {
-  evolution: defineTable({
+const evolutions = {
+  evolutions: defineTable({
     evolutionStage: v.string(),
     evolutionImgUrl: v.string(),
     requiredLevel: v.number(),
     maxHealthPoints: v.number(),
     requiredExperiencePoints: v.number(),
-    petId: v.id('pet'),
+    petId: v.id('pets'),
     description: v.optional(v.string()),
     isFinalEvolution: v.boolean(),
     isEgg: v.boolean(),
     requiredHatchDistance: v.optional(v.number()),
-  })
-}
-
+    requiredRecoveryDistance: v.optional(v.number()),
+  }),
+};
 
 export default defineSchema({
-  ...userSchema,
-  ...petSchema,
-  ...petTypeSchema,
-  ...evolution,
+  ...users,
+  ...pets,
+  ...petTypes,
+  ...evolutions,
   ...petStatLog,
   ...runLog,
 });
