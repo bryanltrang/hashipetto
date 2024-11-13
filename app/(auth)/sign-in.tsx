@@ -30,7 +30,7 @@ export default function SignInScreen() {
 
       if (signInAttempt.status === 'complete') {
         await setActive({ session: signInAttempt.createdSessionId });
-        router.replace('/');
+        router.replace('/home');
       } else {
         // See https://clerk.com/docs/custom-flows/error-handling
         // for more info on error handling
@@ -69,8 +69,10 @@ export default function SignInScreen() {
       />
       {errors?.map((error) => {
         return (
-          <ThemedText className="text-base text-red-700 h-10 leading-10">
-            {ErrorMessageCodes[error.code]}
+          <ThemedText
+            key={error.code}
+            className="text-base text-red-700 h-10 leading-10">
+            {ErrorMessageCodes[error.code] || error.message}
           </ThemedText>
         );
       })}
@@ -92,7 +94,7 @@ export default function SignInScreen() {
           Don't have an account?
         </ThemedText>
         <ThemedLink
-          href="/signUp"
+          href="/sign-up"
           className="text-center text-base font-semibold border overflow-hidden bg-slate-100 border-slate-200 leading-10 rounded-md">
           <ThemedText>Create an account</ThemedText>
         </ThemedLink>

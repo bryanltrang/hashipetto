@@ -3,11 +3,9 @@ import { v } from 'convex/values';
 
 const users = {
   users: defineTable({
-    firstName: v.string(),
-    lastName: v.string(),
-    email: v.string(),
     profileImageUrl: v.string(),
     activePet: v.id('pets'),
+    clerkUserId: v.string(),
   }),
 };
 

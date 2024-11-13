@@ -18,7 +18,7 @@ export default function SignUpScreen() {
           Have an account?
         </ThemedText>
         <Link
-          href="/signIn"
+          href="/sign-in"
           className="text-center text-base font-semibold border overflow-hidden bg-slate-100 border-slate-200 leading-10 rounded-md">
           <ThemedText>Login</ThemedText>
         </Link>
