@@ -4,12 +4,12 @@ import { v } from 'convex/values';
 const users = {
   users: defineTable({
     profileImageUrl: v.string(),
-    activePet: v.id('pets'),
+    activePetId: v.optional(v.id('pets')),
     clerkUserId: v.string(),
-  }),
+  }).index('pets', ['activePetId']),
 };
 
-const pets = {
+export const pets = {
   pets: defineTable({
     defaultName: v.string(),
     name: v.optional(v.string()),
@@ -17,6 +17,7 @@ const pets = {
     experiencePoints: v.number(),
     level: v.number(),
     evolutionStage: v.union(
+      v.literal('egg'),
       v.literal('first'),
       v.literal('second'),
       v.literal('third'),
@@ -28,7 +29,9 @@ const pets = {
     totalDistanceKM: v.number(),
     totalDurationMinutes: v.number(),
     needsRecovery: v.boolean(),
-  }),
+  })
+    .index('users', ['userId'])
+    .index('petTypes', ['petTypeId']),
 };
 
 const petStatLog = {
@@ -36,7 +39,7 @@ const petStatLog = {
     experiencePoints: v.number(),
     level: v.number(),
     petId: v.id('pets'),
-  }),
+  }).index('pets', ['petId']),
 };
 
 const runLog = {
@@ -47,7 +50,9 @@ const runLog = {
     runDate: v.string(),
     caloriesBurned: v.number(),
     userId: v.id('users'),
-  }),
+  })
+    .index('petStatLog', ['petStatLogId'])
+    .index('users', ['userId']),
 };
 
 const petTypes = {
@@ -59,18 +64,22 @@ const petTypes = {
 
 const evolutions = {
   evolutions: defineTable({
-    evolutionStage: v.string(),
+    evolutionStage: v.union(
+      v.literal('egg'),
+      v.literal('first'),
+      v.literal('second'),
+      v.literal('third'),
+    ),
     evolutionImgUrl: v.string(),
     requiredLevel: v.number(),
     maxHealthPoints: v.number(),
     requiredExperiencePoints: v.number(),
-    petId: v.id('pets'),
+    petTypeId: v.id('petTypes'),
     description: v.optional(v.string()),
     isFinalEvolution: v.boolean(),
-    isEgg: v.boolean(),
     requiredHatchDistance: v.optional(v.number()),
     requiredRecoveryDistance: v.optional(v.number()),
-  }),
+  }).index('petTypes', ['petTypeId']),
 };
 
 export default defineSchema({
