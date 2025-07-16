@@ -3,14 +3,14 @@ import { mutation } from '../_generated/server';
 
 export const createUser = mutation({
   args: {
-    activePet: v.id('pets'),
+    activePetId: v.id('pets'),
     profileImageUrl: v.string(),
     clerkUserId: v.string(),
   },
   handler: async (ctx, args) => {
     try {
       const newUserId = await ctx.db.insert('users', {
-        activePet: args.activePet,
+        activePetId: args.activePetId,
         profileImageUrl: args.profileImageUrl,
         clerkUserId: args.clerkUserId,
       });
