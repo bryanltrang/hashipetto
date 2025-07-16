@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { ThemedTextInput } from '../ThemedTextInput';
 import { ThemedPressable } from '../ThemedPressable';
 import { ThemedText } from '../ThemedText';
+import { ClerkAPIError } from '@clerk/types';
 
 export default function EmailSignUp() {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -16,6 +17,7 @@ export default function EmailSignUp() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [pendingVerification, setPendingVerification] = useState(false);
   const [code, setCode] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const onSignUpPress = async () => {
     if (!isLoaded) {
@@ -34,7 +36,9 @@ export default function EmailSignUp() {
     } catch (err) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
-      console.error(JSON.stringify(err, null, 2));
+      const clerkError: ClerkAPIError = (err as any).errors[0];
+      console.error(JSON.stringify(clerkError, null, 2));
+      setErrorMessage(clerkError.message);
     }
   };
 
@@ -94,6 +98,9 @@ export default function EmailSignUp() {
               setConfirmPassword(confirmPassword)
             }
           />
+          {errorMessage && (
+            <ThemedText className="text-red-500">{errorMessage}</ThemedText>
+          )}
           <ThemedPressable
             className="overflow-hidden bg-amber-300 mb-4 rounded-md"
             onPress={onSignUpPress}>
