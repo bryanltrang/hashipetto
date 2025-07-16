@@ -6,6 +6,7 @@ import { ThemedTextInput } from '../ThemedTextInput';
 import { ThemedPressable } from '../ThemedPressable';
 import { ThemedText } from '../ThemedText';
 import { ClerkAPIError } from '@clerk/types';
+import { ErrorMessageCodes } from '@/constants/ErrorMessageCodes';
 
 export default function EmailSignUp() {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -17,7 +18,7 @@ export default function EmailSignUp() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [pendingVerification, setPendingVerification] = useState(false);
   const [code, setCode] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errors, setErrors] = useState<ClerkAPIError[]>();
 
   const onSignUpPress = async () => {
     if (!isLoaded) {
@@ -33,12 +34,11 @@ export default function EmailSignUp() {
       await signUp.prepareEmailAddressVerification({ strategy: 'email_code' });
 
       setPendingVerification(true);
-    } catch (err) {
+    } catch (err: any) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
-      const clerkError: ClerkAPIError = (err as any).errors[0];
-      console.error(JSON.stringify(clerkError, null, 2));
-      setErrorMessage(clerkError.message);
+      setErrors(err.errors as ClerkAPIError[]);
+      console.error(JSON.stringify(err, null, 2));
     }
   };
 
@@ -98,9 +98,15 @@ export default function EmailSignUp() {
               setConfirmPassword(confirmPassword)
             }
           />
-          {errorMessage && (
-            <ThemedText className="text-red-500">{errorMessage}</ThemedText>
-          )}
+          {errors?.map((error) => {
+            return (
+              <ThemedText
+                key={error.code}
+                className="text-base text-red-700 h-10 leading-10">
+                {ErrorMessageCodes[error.code] || error.message}
+              </ThemedText>
+            );
+          })}
           <ThemedPressable
             className="overflow-hidden bg-amber-300 mb-4 rounded-md"
             onPress={onSignUpPress}>

@@ -17,14 +17,22 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "bundleIdentifier": "com.anonymous.hashipetto"
+      "bundleIdentifier": "com.anonymous.hashipetto",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app uses location to track your running activities with your virtual pet.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses location to track your running activities with your virtual pet."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.hashipetto"
+      "package": "com.anonymous.hashipetto",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +45,13 @@
         "expo-secure-store",
         {
           "faceIDPermission": "Allow Hashipetto to access your Face ID biometric data."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Hashipetto to use your location to track running activities with your virtual pet.",
+          "isIosBackgroundLocationEnabled": false
         }
       ]
     ],
