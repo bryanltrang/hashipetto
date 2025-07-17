@@ -3,13 +3,15 @@ import React from 'react';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import LocationPermissionGuard from '@/components/LocationPermissionGuard';
+import NotificationPermissionGuard from '@/components/NotificationPermissionGuard';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <LocationPermissionGuard>
-      <Tabs
+      <NotificationPermissionGuard>
+        <Tabs
         screenOptions={{
           tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
           headerShown: false,
@@ -26,7 +28,8 @@ export default function TabLayout() {
             title: 'Profile',
           }}
         />
-      </Tabs>
+        </Tabs>
+      </NotificationPermissionGuard>
     </LocationPermissionGuard>
   );
 }

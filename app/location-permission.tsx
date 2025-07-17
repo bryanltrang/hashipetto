@@ -5,8 +5,8 @@ export default function LocationPermissionRoute() {
   const router = useRouter();
 
   const handlePermissionGranted = () => {
-    // Redirect to home after permission is granted
-    router.replace('/(tabs)/home');
+    // After enabling location, prompt for notifications next
+    router.replace('/notification-permission');
   };
 
   return (
