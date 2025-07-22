@@ -59,6 +59,7 @@ export const useHealthPermissions = () => {
     try {
       setState(prev => ({ ...prev, isLoading: true, error: null }));
       const granted = await initHealthKitAsync();
+      console.log('requestPermissions granted', granted);
       setState({ hasPermission: granted, isLoading: false, error: null });
       return granted;
     } catch (error) {

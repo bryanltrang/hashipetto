@@ -22,7 +22,7 @@ export default function HealthPermissionScreen({ onDone }: HealthPermissionScree
 
   const handleRequestPermissions = async () => {
     const granted = await requestPermissions();
-
+    console.log('handleRequestPermissions granted', granted);
     if (granted) {
       await finishFlow();
     } else {
