@@ -7,6 +7,8 @@ PODS:
     - ExpoModulesCore
   - EXLocation (17.0.1):
     - ExpoModulesCore
+  - EXNotifications (0.28.19):
+    - ExpoModulesCore
   - Expo (51.0.34):
     - ExpoModulesCore
   - ExpoAsset (10.0.10):
@@ -1314,6 +1316,7 @@ DEPENDENCIES:
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXLocation (from `../node_modules/expo-location/ios`)
+  - EXNotifications (from `../node_modules/expo-notifications/ios`)
   - Expo (from `../node_modules/expo`)
   - ExpoAsset (from `../node_modules/expo-asset/ios`)
   - ExpoCrypto (from `../node_modules/expo-crypto/ios`)
@@ -1402,6 +1405,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-constants/ios"
   EXLocation:
     :path: "../node_modules/expo-location/ios"
+  EXNotifications:
+    :path: "../node_modules/expo-notifications/ios"
   Expo:
     :path: "../node_modules/expo"
   ExpoAsset:
@@ -1550,6 +1555,7 @@ SPEC CHECKSUMS:
   EXApplication: ec862905fdab3a15bf6bd8ca1a99df7fc02d7762
   EXConstants: 89d35611505a8ce02550e64e43cd05565da35f9a
   EXLocation: c52e800875ce2a5974b3b796ff2f3a8b978e0b28
+  EXNotifications: 6ce128c0d3d3d161cd68bfd07d593db40e140396
   Expo: 93eccc289186d4ee2ea716657040a92c3e93c36d
   ExpoAsset: 286fee7ba711ce66bf20b315e68106b13b8629fc
   ExpoCrypto: c5c052d5f9f668c21975cb4caf072cec23c823fa
@@ -1564,9 +1570,9 @@ SPEC CHECKSUMS:
   EXSplashScreen: 4d8b63645949a45202b853e9daec9f2291f539e6
   FBLazyVector: ac12dc084d1c8ec4cc4d7b3cf1b0ebda6dab85af
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
-  glog: fdfdfe5479092de0c4bdbebedd9056951f092c4f
+  glog: 69ef571f3de08433d766d614c73a9838a06bf7eb
   hermes-engine: 8c1577f3fdb849cbe7729c2e7b5abc4b845e88f8
-  RCT-Folly: 02617c592a293bd6d418e0a88ff4ee1f88329b47
+  RCT-Folly: 34124ae2e667a0e5f0ea378db071d27548124321
   RCTDeprecation: 3afceddffa65aee666dafd6f0116f1d975db1584
   RCTRequired: ec1239bc9d8bf63e10fb92bd8b26171a9258e0c1
   RCTTypeSafety: f5ecbc86c5c5fa163c05acb7a1c5012e15b5f994

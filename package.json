@@ -26,8 +26,6 @@
     "@react-native-reusables/cli": "^0.1.0",
     "@react-native/eslint-config": "^0.75.3",
     "@react-navigation/native": "^6.0.2",
-    "add": "^2.0.6",
-    "button": "^1.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "convex": "^1.16.2",
@@ -43,7 +41,6 @@
     "expo-status-bar": "~1.12.1",
     "expo-system-ui": "~3.0.7",
     "expo-web-browser": "~13.0.3",
-    "install": "^0.13.0",
     "lucide-react-native": "^0.447.0",
     "nativewind": "^4.0.1",
     "npm": "^11.4.2",
@@ -59,7 +56,6 @@
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "^3.4.13",
     "tailwindcss-animate": "^1.0.7",
-    "text": "^0.1.0",
     "expo-notifications": "~0.28.19"
   },
   "devDependencies": {
