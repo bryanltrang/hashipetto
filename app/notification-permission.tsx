@@ -13,11 +13,11 @@ export default function NotificationPermissionRoute() {
     (async () => {
       const promptSeen = await AsyncStorage.getItem(NOTIFICATION_PROMPT_KEY);
       if (promptSeen) {
-        router.replace('/(tabs)/home');
+        router.replace('/health-permission');
       } else {
         if (hasPermission) {
           await AsyncStorage.setItem(NOTIFICATION_PROMPT_KEY, 'true');
-          router.replace('/(tabs)/home');
+          router.replace('/health-permission');
         } else {
           setPromptChecked(true);
         }
@@ -26,7 +26,7 @@ export default function NotificationPermissionRoute() {
   }, [hasPermission, router]);
 
   const handleDone = () => {
-    router.replace('/(tabs)/home');
+    router.replace('/health-permission');
   };
 
   if (promptChecked === null) {

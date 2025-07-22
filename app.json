@@ -20,7 +20,9 @@
       "bundleIdentifier": "com.anonymous.hashipetto",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "This app uses location to track your running activities with your virtual pet.",
-        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses location to track your running activities with your virtual pet."
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses location to track your running activities with your virtual pet.",
+        "NSHealthShareUsageDescription": "Read and understand your health data to personalize your pet's experience.",
+        "NSHealthUpdateUsageDescription": "Save activity data to help track your progress together with your pet."
       }
     },
     "android": {
@@ -53,7 +55,8 @@
           "locationAlwaysAndWhenInUsePermission": "Allow Hashipetto to use your location to track running activities with your virtual pet.",
           "isIosBackgroundLocationEnabled": false
         }
-      ]
+      ],
+      "react-native-health"
     ],
     "experiments": {
       "typedRoutes": true
