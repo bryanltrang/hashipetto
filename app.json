@@ -13,7 +13,6 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "deploymentTarget": "13.4",
       "supportsTablet": true,
       "config": {
         "usesNonExemptEncryption": false

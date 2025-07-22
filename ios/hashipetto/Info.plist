@@ -31,6 +31,12 @@
           <string>com.anonymous.hashipetto</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>exp+hashipetto</string>
+        </array>
+      </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>
@@ -47,6 +53,16 @@
     </dict>
     <key>NSFaceIDUsageDescription</key>
     <string>Allow Hashipetto to access your Face ID biometric data.</string>
+    <key>NSHealthShareUsageDescription</key>
+    <string>Read and understand your health data to personalize your pet's experience.</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>Save activity data to help track your progress together with your pet.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Allow Hashipetto to use your location to track running activities with your virtual pet.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to access your location</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app uses location to track your running activities with your virtual pet.</string>
     <key>NSUserActivityTypes</key>
     <array>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
