@@ -56,7 +56,15 @@
           "isIosBackgroundLocationEnabled": false
         }
       ],
-      "react-native-health"
+      "react-native-health",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "14.0"
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
