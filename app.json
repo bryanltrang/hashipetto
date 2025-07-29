@@ -33,7 +33,9 @@
       "package": "com.anonymous.hashipetto",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
-        "ACCESS_FINE_LOCATION"
+        "ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
       ]
     },
     "web": {
@@ -68,6 +70,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "b1a47611-a475-45e4-99de-5e449ce0123d"
+      }
+    },
+    "owner": "bryanltrang"
   }
 }
