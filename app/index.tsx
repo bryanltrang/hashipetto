@@ -1,7 +1,7 @@
 import { ThemedLink } from '@/components/ThemedLinkButton';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { SignedIn, SignedOut } from '@clerk/clerk-react';
+import { SignedIn, SignedOut } from '@clerk/clerk-expo';
 import { Redirect } from 'expo-router';
 
 export default function DefaultScreen() {
