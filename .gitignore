@@ -21,3 +21,11 @@ web-build/
 expo-env.d.ts
 # @end expo-cli
 node_modules
+
+# Expo
+.expo
+dist/
+web-build/
+
+ios/
+android/

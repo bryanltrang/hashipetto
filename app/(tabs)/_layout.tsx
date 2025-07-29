@@ -4,6 +4,7 @@ import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import LocationPermissionGuard from '@/components/LocationPermissionGuard';
 import NotificationPermissionGuard from '@/components/NotificationPermissionGuard';
+import HealthPermissionGuard from '@/components/HealthPermissionGuard';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -11,6 +12,7 @@ export default function TabLayout() {
   return (
     <LocationPermissionGuard>
       <NotificationPermissionGuard>
+        <HealthPermissionGuard>
         <Tabs
         screenOptions={{
           tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
@@ -29,6 +31,7 @@ export default function TabLayout() {
           }}
         />
         </Tabs>
+        </HealthPermissionGuard>
       </NotificationPermissionGuard>
     </LocationPermissionGuard>
   );
