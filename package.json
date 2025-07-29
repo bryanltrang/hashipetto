@@ -11,6 +11,8 @@
     "test": "jest --watchAll",
     "lint": "expo lint",
     "clean": "expo prebuild --clean",
+    "check-deps": "npx expo install --check",
+    "doctor": "npx expo-doctor",
     "prettier:write": "prettier --config .prettierrc --write .",
     "prettier:check": "prettier --config .prettierrc --check ."
   },
